@@ -9,30 +9,31 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ferhattuncel.warmycandle.R
+import com.ferhattuncel.warmycandle.data.entity.Category
 import com.ferhattuncel.warmycandle.data.entity.Product
+import com.ferhattuncel.warmycandle.databinding.CardCategoryBinding
 import com.ferhattuncel.warmycandle.databinding.CardProductBinding
 import com.ferhattuncel.warmycandle.ui.viewmodel.MainViewModel
 import com.ferhattuncel.warmycandle.utils.doPageTransfer
 
 
-class ProductAdapter (var mContext:Context, var productList:List<Product>, var viewModel: MainViewModel)
-    : RecyclerView.Adapter<ProductAdapter.CardDesignHolder>(){
-
-    inner class CardDesignHolder(var design: CardProductBinding) : RecyclerView.ViewHolder(design.root)
+class CategoryAdapter (var mContext:Context, var categoryList:List<Category>, var viewModel: MainViewModel)
+    : RecyclerView.Adapter<CategoryAdapter.CardDesignHolder>(){
+    inner class CardDesignHolder(var design: CardCategoryBinding) : RecyclerView.ViewHolder(design.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
-        val binding : CardProductBinding = DataBindingUtil
-            .inflate(LayoutInflater.from(mContext), R.layout.card_product,parent,false)
+        val binding : CardCategoryBinding = DataBindingUtil
+            .inflate(LayoutInflater.from(mContext), R.layout.card_category,parent,false)
         return CardDesignHolder(binding)
     }
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
-        val product = productList.get(position)
+        val category = categoryList.get(position)
         val d = holder.design
 
-        val url = "http://warmycandle.com.tr/${product.pic}"
+        val url = "http://warmycandle.com.tr/${category.pic}"
         Log.e("FTLOG", url)
-        Glide.with(mContext).load(url).override(90,120).into(d.iwPicture)
+        Glide.with(mContext).load(url).override(320,200).into(d.iwPicture)
 
-        d.productEntityDataBindingVariable = product
+        d.categoryEntityDataBindingVariable = category
 
         /*
         d.btnCart.setOnClickListener {
@@ -47,10 +48,10 @@ class ProductAdapter (var mContext:Context, var productList:List<Product>, var v
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return categoryList.size
     }
-    fun updateItems(newItems : List<Product>){
-        this.productList = newItems
+    fun updateItems(newItems : List<Category>){
+        this.categoryList = newItems
         notifyDataSetChanged()
     }
 }

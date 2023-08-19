@@ -1,6 +1,7 @@
 package com.ferhattuncel.warmycandle.retrofit
 
 import com.ferhattuncel.warmycandle.data.entity.CRUDResponse
+import com.ferhattuncel.warmycandle.data.entity.CategoryResponse
 import com.ferhattuncel.warmycandle.data.entity.ProductPhotoResponse
 import com.ferhattuncel.warmycandle.data.entity.ProductResponse
 import retrofit2.http.GET
@@ -16,6 +17,9 @@ interface ProductDao {
     @POST("api/getProductPhoto.php")
     @FormUrlEncoded
     suspend fun loadProductPhotoList(@Field("product_id") product_id: Int) : ProductPhotoResponse
+
+    @GET("api/getCategoryList.php")
+    suspend fun loadCategoryItems() : CategoryResponse
 
     /*@POST("yemekler/sepeteYemekEkle.php")
     @FormUrlEncoded

@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.ferhattuncel.warmycandle.R
+import com.ferhattuncel.warmycandle.ui.adapter.CategoryAdapter
 import com.ferhattuncel.warmycandle.ui.adapter.ProductAdapter
 import com.ferhattuncel.warmycandle.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,6 +36,15 @@ class MainpageFragment : Fragment() {
                 binding.productAdapterDataBindingVariable = adapter
             } else {
                 (binding.rvProduct.adapter as ProductAdapter).updateItems(it)
+            }
+        }
+
+        viewModel.categoryList.observe(viewLifecycleOwner){
+            if (binding.rvCategory.adapter == null){
+                val adapter = CategoryAdapter(requireContext(),it,viewModel)
+                binding.categoryAdapterDataBindingVariable = adapter
+            } else {
+                (binding.rvCategory.adapter as CategoryAdapter).updateItems(it)
             }
         }
 

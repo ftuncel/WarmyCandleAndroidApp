@@ -2,6 +2,7 @@ package com.ferhattuncel.warmycandle.data.repo
 
 import android.util.Log
 import com.ferhattuncel.warmycandle.data.datasource.ProductDataSource
+import com.ferhattuncel.warmycandle.data.entity.Category
 import com.ferhattuncel.warmycandle.data.entity.Product
 
 
@@ -24,14 +25,18 @@ class ProductRepository (var productDataSource: ProductDataSource){
     }
 
     suspend fun loadMenu() : List<Product>{
-        Log.e("FTLOG","loadMenu")
+        Log.e("FTLOG"," ProductRepository loadMenu")
         return productDataSource.loadMenu()
     }
     suspend fun loadProductPhotoList(product_id: Int) : List<String>{
-        Log.e("FTLOG","loadMenu")
+        Log.e("FTLOG"," ProductRepository loadProductPhotoList")
         return productDataSource.loadProductPhotoList(product_id)
     }
 
+    suspend fun loadCategoryList() : List<Category>{
+        Log.e("FTLOG","ProductRepository loadCategoryList")
+        return productDataSource.loadCategoryList()
+    }
 
     suspend fun cleanCart() {
         //productDataSource.cleanCart()

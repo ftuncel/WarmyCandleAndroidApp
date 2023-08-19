@@ -1,12 +1,11 @@
 package com.ferhattuncel.warmycandle.data.datasource
 
 import android.util.Log
+import com.ferhattuncel.warmycandle.data.entity.Category
 import com.ferhattuncel.warmycandle.data.entity.Product
 import com.ferhattuncel.warmycandle.retrofit.ProductDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
-import java.io.IOException
 
 class ProductDataSource(var productDao: ProductDao) {
     val USER_NAME = "ftuncel"
@@ -39,5 +38,11 @@ class ProductDataSource(var productDao: ProductDao) {
         withContext(Dispatchers.IO){
             Log.d("FTLOG","ProductDataSource loadProductPhotoList")
             return@withContext productDao.loadProductPhotoList(product_id).product_photo_list
+        }
+
+    suspend fun loadCategoryList() : List<Category> =
+        withContext(Dispatchers.IO){
+            Log.d("FTLOG","ProductDataSource loadCategoryList")
+            return@withContext productDao.loadCategoryItems().categories
         }
 }
