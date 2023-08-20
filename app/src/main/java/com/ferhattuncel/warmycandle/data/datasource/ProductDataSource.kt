@@ -3,35 +3,16 @@ package com.ferhattuncel.warmycandle.data.datasource
 import android.util.Log
 import com.ferhattuncel.warmycandle.data.entity.Category
 import com.ferhattuncel.warmycandle.data.entity.Product
+import com.ferhattuncel.warmycandle.data.entity.SliderEntity
 import com.ferhattuncel.warmycandle.retrofit.ProductDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ProductDataSource(var productDao: ProductDao) {
-    val USER_NAME = "ftuncel"
-    suspend fun incQuantity(quantity:Int) : Int =
+    suspend fun loadOfferList() : List<Product> =
         withContext(Dispatchers.IO){
-            return@withContext (quantity + 1)
-        }
-
-    suspend fun decQuantity(quantity:Int) : Int =
-        withContext(Dispatchers.IO){
-            var newQuantity = quantity - 1
-            if (newQuantity < 1) {
-                newQuantity = 1
-            }
-            return@withContext newQuantity
-        }
-
-    suspend fun removeFromCart(id:Int, username:String){
-        Log.d("FTLOG", "ProductDataSource removeFromCart id= " + id)
-        //productDao.removeCartItem(id, username)
-    }
-
-    suspend fun loadMenu() : List<Product> =
-        withContext(Dispatchers.IO){
-            Log.d("FTLOG","ProductDataSource loadMenuItems")
-            return@withContext productDao.loadMenuItems().products
+            Log.d("FTLOG","ProductDataSource loadOfferList")
+            return@withContext productDao.loadOfferItems().products
         }
 
     suspend fun loadProductPhotoList(product_id:Int) : List<String> =
@@ -44,5 +25,17 @@ class ProductDataSource(var productDao: ProductDao) {
         withContext(Dispatchers.IO){
             Log.d("FTLOG","ProductDataSource loadCategoryList")
             return@withContext productDao.loadCategoryItems().categories
+        }
+
+    suspend fun loadProductList(): List<Product> =
+        withContext(Dispatchers.IO){
+            Log.d("FTLOG","ProductDataSource loadProductList")
+            return@withContext productDao.loadProductItems().products
+        }
+
+    suspend fun loadSliderList(): List<SliderEntity> =
+        withContext(Dispatchers.IO){
+            Log.d("FTLOG","ProductDataSource loadSliderList")
+            return@withContext productDao.loadSliderItems().sliders
         }
 }

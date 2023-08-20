@@ -7,5 +7,16 @@
     <fragment
         android:id="@+id/mainpageFragment"
         android:name="com.ferhattuncel.warmycandle.ui.fragment.MainpageFragment"
-        android:label="MainpageFragment" />
+        android:label="MainpageFragment"
+        tools:layout="@layout/fragment_mainpage"/>
+    <fragment
+        android:id="@+id/bottom_nav_item_product"
+        android:name="com.ferhattuncel.warmycandle.ui.fragment.ProductPageFragment"
+        android:label="ProductPageFragment"
+        tools:layout="@layout/fragment_product_page"/>
+    <fragment
+        android:id="@+id/bottom_nav_item_category"
+        android:name="com.ferhattuncel.warmycandle.ui.fragment.CategoryPageFragment"
+        android:label="CategoryPageFragment"
+        tools:layout="@layout/fragment_category_page"/>
 </navigation>

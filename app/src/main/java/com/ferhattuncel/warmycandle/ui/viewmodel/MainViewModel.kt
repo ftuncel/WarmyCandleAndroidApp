@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ferhattuncel.warmycandle.data.entity.Category
 import com.ferhattuncel.warmycandle.data.entity.Product
+import com.ferhattuncel.warmycandle.data.entity.SliderEntity
 import com.ferhattuncel.warmycandle.data.repo.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -14,22 +15,45 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor (var itemRepository: ProductRepository): ViewModel() {
-    var itemsList = MutableLiveData<List<Product>>()
-    private var allItems : List<Product> = listOf()
+    var offerList = MutableLiveData<List<Product>>()
+    private var allOfferItems : List<Product> = listOf()
 
     var categoryList = MutableLiveData<List<Category>>()
     private var allCategoryItems : List<Category> = listOf()
 
+    var productList = MutableLiveData<List<Product>>()
+    private var allProductItems : List<Product> = listOf()
+
+    var sliderList = MutableLiveData<List<SliderEntity>>()
+    private var allSliderItems : List<SliderEntity> = listOf()
+
     init {
         Log.e("FTLOG","MainViewModel")
-        loadMenuItems()
+        loadOfferItems()
         loadCategoryItems()
     }
-    fun loadMenuItems(){
-        Log.e("FTLOG","loadMenuItems")
+
+    fun loadProductItems(){
+        Log.e("FTLOG","loadProductItems")
         CoroutineScope(Dispatchers.Main).launch {
-            allItems = itemRepository.loadMenu()
-            itemsList.value = allItems
+            allProductItems = itemRepository.loadProductList()
+            productList.value = allProductItems
+        }
+    }
+
+    fun loadSliderItems(){
+        Log.e("FTLOG","loadSliderItems")
+        CoroutineScope(Dispatchers.Main).launch {
+            allSliderItems = itemRepository.loadSliderList()
+            sliderList.value = allSliderItems
+        }
+    }
+
+    fun loadOfferItems(){
+        Log.e("FTLOG","loadOfferItems")
+        CoroutineScope(Dispatchers.Main).launch {
+            allOfferItems = itemRepository.loadOfferList()
+            offerList.value = allOfferItems
         }
     }
 
@@ -44,11 +68,11 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
     fun filterList(query:String){
         CoroutineScope(Dispatchers.Main).launch{
             val filteredItems = if (query.isEmpty()) {
-                allItems
+                allOfferItems
             } else {
-                allItems.filter { item -> item.name.contains(query, ignoreCase = true) }
+                allOfferItems.filter { item -> item.name.contains(query, ignoreCase = true) }
             }
-            itemsList.value = filteredItems
+            offerList.value = filteredItems
         }
     }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_nav_item_product"
+        android:icon="@drawable/baseline_local_fire_department_24"
+        android:title="Ürünler" />
+
+    <item
+        android:id="@+id/mainpageFragment"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Anasayfa"
+        />
+
+    <item
+        android:id="@+id/bottom_nav_item_category"
+        android:icon="@drawable/baseline_category_24"
+        android:title="Kategori"
+        />
+</menu>

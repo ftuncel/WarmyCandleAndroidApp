@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import com.ferhattuncel.warmycandle.R
 import com.ferhattuncel.warmycandle.ui.adapter.CategoryAdapter
 import com.ferhattuncel.warmycandle.ui.adapter.ProductAdapter
@@ -30,7 +29,7 @@ class MainpageFragment : Fragment() {
         binding.mainpageFragmentDataBindingVariable = this
         binding.mainpageToolbarTitle = "WarmyCandle"
 
-        viewModel.itemsList.observe(viewLifecycleOwner){
+        viewModel.offerList.observe(viewLifecycleOwner){
             if (binding.rvProduct.adapter == null){
                 val adapter = ProductAdapter(requireContext(),it,viewModel)
                 binding.productAdapterDataBindingVariable = adapter

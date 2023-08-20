@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
         <variable
             name="mainpageToolbarTitle"
@@ -18,110 +18,108 @@
             type="com.ferhattuncel.warmycandle.ui.adapter.CategoryAdapter" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarMainpage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/mainBGColor"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvTitleOffers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/pacifico"
-                android:text="@{mainpageToolbarTitle}"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                tools:layout_editor_absoluteX="179dp"
-                tools:layout_editor_absoluteY="17dp" />
+                android:layout_marginStart="8dp"
+                android:text="Öne çıkan ürünler"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
-        </androidx.appcompat.widget.Toolbar>
-
-
-        <TextView
-            android:id="@+id/tvTitleOffers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Öne çıkan ürünler"
-            android:textAlignment="textStart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProduct"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adapter="@{productAdapterDataBindingVariable}"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/tvTitleCategories"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleOffers"
-            app:spanCount="1"></androidx.recyclerview.widget.RecyclerView>
-
-
-        <TextView
-            android:id="@+id/tvTitleCategories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Kategoriler"
-            android:textAlignment="textStart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvProduct" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategory"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:adapter="@{categoryAdapterDataBindingVariable}"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleCategories"
-            app:spanCount="2">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarMainpage">
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchBox"
-                android:layout_width="match_parent"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProduct"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent"
-                app:queryHint="Ürün ara" />
-        </com.google.android.material.card.MaterialCardView>
+                android:adapter="@{productAdapterDataBindingVariable}"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/tvTitleCategories"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleOffers"
+                app:spanCount="1"></androidx.recyclerview.widget.RecyclerView>
 
+            <TextView
+                android:id="@+id/tvTitleCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Kategoriler"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvProduct" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adapter="@{categoryAdapterDataBindingVariable}"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleCategories"
+                app:spanCount="2">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarMainpage">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:queryBackground="@android:color/transparent"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="Ürün ara" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarMainpage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/mainBGColor"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/pacifico"
+                    android:text="@{mainpageToolbarTitle}"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    tools:layout_editor_absoluteX="179dp"
+                    tools:layout_editor_absoluteY="17dp" />
+            </androidx.appcompat.widget.Toolbar>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
