@@ -10,7 +10,7 @@ import com.ferhattuncel.warmycandle.data.entity.SliderEntity
 class ProductRepository (var productDataSource: ProductDataSource){
 
     suspend fun loadOfferList() : List<Product>{
-        Log.e("FTLOG"," ProductRepository loadMenu")
+        Log.e("FTLOG"," ProductRepository loadOfferList")
         return productDataSource.loadOfferList()
     }
     suspend fun loadProductPhotoList(product_id: Int) : List<String>{

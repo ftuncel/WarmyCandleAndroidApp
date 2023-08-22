@@ -11,7 +11,7 @@ import retrofit2.http.Field
 
 
 interface ProductDao {
-    @GET("api/getProductList.php")
+    @GET("api/getOfferList.php")
     suspend fun loadOfferItems() : ProductResponse
 
     @POST("api/getProductPhoto.php")

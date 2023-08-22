@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvProduct"
+                android:id="@+id/rvOffer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:adapter="@{productAdapterDataBindingVariable}"
@@ -58,7 +58,7 @@
                 android:text="Kategoriler"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvProduct" />
+                app:layout_constraintTop_toBottomOf="@+id/rvOffer" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCategory"

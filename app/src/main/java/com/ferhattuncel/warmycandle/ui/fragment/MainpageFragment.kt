@@ -30,11 +30,11 @@ class MainpageFragment : Fragment() {
         binding.mainpageToolbarTitle = "WarmyCandle"
 
         viewModel.offerList.observe(viewLifecycleOwner){
-            if (binding.rvProduct.adapter == null){
+            if (binding.rvOffer.adapter == null){
                 val adapter = ProductAdapter(requireContext(),it,viewModel)
                 binding.productAdapterDataBindingVariable = adapter
             } else {
-                (binding.rvProduct.adapter as ProductAdapter).updateItems(it)
+                (binding.rvOffer.adapter as ProductAdapter).updateItems(it)
             }
         }
 

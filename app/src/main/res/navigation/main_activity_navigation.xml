@@ -8,15 +8,32 @@
         android:id="@+id/mainpageFragment"
         android:name="com.ferhattuncel.warmycandle.ui.fragment.MainpageFragment"
         android:label="MainpageFragment"
-        tools:layout="@layout/fragment_mainpage"/>
+        tools:layout="@layout/fragment_mainpage">
+        <action
+            android:id="@+id/goMainToProductDetail"
+            app:destination="@id/productDetailPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bottom_nav_item_product"
         android:name="com.ferhattuncel.warmycandle.ui.fragment.ProductPageFragment"
         android:label="ProductPageFragment"
-        tools:layout="@layout/fragment_product_page"/>
+        tools:layout="@layout/fragment_product_page">
+        <action
+            android:id="@+id/goProductToProductDetail"
+            app:destination="@id/productDetailPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bottom_nav_item_category"
         android:name="com.ferhattuncel.warmycandle.ui.fragment.CategoryPageFragment"
         android:label="CategoryPageFragment"
         tools:layout="@layout/fragment_category_page"/>
+    <fragment
+        android:id="@+id/productDetailPageFragment"
+        android:name="com.ferhattuncel.warmycandle.ui.fragment.ProductDetailPageFragment"
+        android:label="fragment_product_detail_page"
+        tools:layout="@layout/fragment_product_detail_page" >
+        <argument
+            android:name="product"
+            app:argType="com.ferhattuncel.warmycandle.data.entity.Product" />
+    </fragment>
 </navigation>

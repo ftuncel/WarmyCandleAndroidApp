@@ -31,6 +31,8 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
         Log.e("FTLOG","MainViewModel")
         loadOfferItems()
         loadCategoryItems()
+        loadProductItems()
+        loadSliderItems()
     }
 
     fun loadProductItems(){
