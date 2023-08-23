@@ -30,13 +30,13 @@ class ProductAdapter (var mContext:Context, var productList:List<Product>, var v
         val d = holder.design
 
         val url = "http://warmycandle.com.tr/${product.pic}"
-        Log.e("FTLOG", url)
+        Log.i("FTLOG", url)
         Glide.with(mContext).load(url).override(120,160).into(d.iwPicture)
 
         d.productEntityDataBindingVariable = product
 
         d.cvProduct.setOnClickListener(){
-            Log.e("FTLOG", product.name)
+            Log.i("FTLOG", "ProductAdapter setOnClickListener. Page Transfer to Product Detail")
             val go = MainpageFragmentDirections.goMainToProductDetail(product = product)
             Navigation.doPageTransfer(it, go)
         }
@@ -61,37 +61,3 @@ class ProductAdapter (var mContext:Context, var productList:List<Product>, var v
         notifyDataSetChanged()
     }
 }
-
-/*
-class ProductAdapter (var mContext: Context, var productList:List<Product>)
-    : RecyclerView.Adapter<ProductAdapter.CardProductHolder>(){
-
-    inner class CardProductHolder (var design : CardProductBinding) : RecyclerView.ViewHolder(design.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardProductHolder {
-        val binding = CardProductBinding.inflate(LayoutInflater.from(mContext) ,parent, false)
-        return CardProductHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: CardProductHolder, position: Int) {
-        val product = productList.get(position)
-        val d = holder.design
-
-        d.iwPicture.setImageResource(
-            mContext.resources.getIdentifier(product.pic, "drawable", mContext.packageName)
-        )
-
-        d.tvPrice.text = "${product.price.toString()} ₺"
-        d.btnCart.setOnClickListener {
-            Snackbar.make(it, "${product.name} added to cart", Snackbar.LENGTH_SHORT).show()
-        }
-        d.cvProduct.setOnClickListener{
-
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return productList.size
-    }
-}
-*/

@@ -11,31 +11,31 @@ import kotlinx.coroutines.withContext
 class ProductDataSource(var productDao: ProductDao) {
     suspend fun loadOfferList() : List<Product> =
         withContext(Dispatchers.IO){
-            Log.d("FTLOG","ProductDataSource loadOfferList")
+            Log.i("FTLOG","ProductDataSource loadOfferList")
             return@withContext productDao.loadOfferItems().products
         }
 
     suspend fun loadProductPhotoList(product_id:Int) : List<String> =
         withContext(Dispatchers.IO){
-            Log.d("FTLOG","ProductDataSource loadProductPhotoList")
+            Log.i("FTLOG","ProductDataSource loadProductPhotoList")
             return@withContext productDao.loadProductPhotoList(product_id).product_photo_list
         }
 
     suspend fun loadCategoryList() : List<Category> =
         withContext(Dispatchers.IO){
-            Log.d("FTLOG","ProductDataSource loadCategoryList")
+            Log.i("FTLOG","ProductDataSource loadCategoryList")
             return@withContext productDao.loadCategoryItems().categories
         }
 
     suspend fun loadProductList(): List<Product> =
         withContext(Dispatchers.IO){
-            Log.d("FTLOG","ProductDataSource loadProductList")
+            Log.i("FTLOG","ProductDataSource loadProductList")
             return@withContext productDao.loadProductItems().products
         }
 
     suspend fun loadSliderList(): List<SliderEntity> =
         withContext(Dispatchers.IO){
-            Log.d("FTLOG","ProductDataSource loadSliderList")
+            Log.i("FTLOG","ProductDataSource loadSliderList")
             return@withContext productDao.loadSliderItems().sliders
         }
 }

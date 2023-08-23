@@ -10,28 +10,27 @@ import com.ferhattuncel.warmycandle.data.entity.SliderEntity
 class ProductRepository (var productDataSource: ProductDataSource){
 
     suspend fun loadOfferList() : List<Product>{
-        Log.e("FTLOG"," ProductRepository loadOfferList")
+        Log.i("FTLOG","ProductRepository loadOfferList")
         return productDataSource.loadOfferList()
     }
+
     suspend fun loadProductPhotoList(product_id: Int) : List<String>{
-        Log.e("FTLOG"," ProductRepository loadProductPhotoList")
+        Log.i("FTLOG","ProductRepository loadProductPhotoList")
         return productDataSource.loadProductPhotoList(product_id)
     }
 
     suspend fun loadCategoryList() : List<Category>{
-        Log.e("FTLOG","ProductRepository loadCategoryList")
+        Log.i("FTLOG","ProductRepository loadCategoryList")
         return productDataSource.loadCategoryList()
     }
 
     suspend fun loadProductList(): List<Product> {
-        Log.e("FTLOG","ProductRepository loadProductList")
+        Log.i("FTLOG","ProductRepository loadProductList")
         return productDataSource.loadProductList()
     }
 
     suspend fun loadSliderList(): List<SliderEntity> {
-        Log.e("FTLOG","ProductRepository loadProductList")
+        Log.i("FTLOG","ProductRepository loadSliderList")
         return productDataSource.loadSliderList()
     }
-
-
 }

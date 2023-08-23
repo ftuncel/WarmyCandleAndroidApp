@@ -7,23 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ferhattuncel.warmycandle.R
 import com.ferhattuncel.warmycandle.databinding.FragmentProductDetailPageBinding
-import com.ferhattuncel.warmycandle.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProductDetailPageFragment : Fragment() {
     private lateinit var binding: FragmentProductDetailPageBinding
-    private lateinit var viewModel: MainViewModel
+    //private lateinit var viewModel: ProductViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("FTLOG","ProductDetailPageFragment")
+        Log.d("FTLOG","ProductDetailPageFragment View")
 
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_product_detail_page,container,false)
@@ -35,6 +33,10 @@ class ProductDetailPageFragment : Fragment() {
 
         binding.productDetailPageToolbarTitle = receivedProduct.name
 
+        binding.backButton.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
         val url = "http://warmycandle.com.tr/${receivedProduct.pic}"
         Log.e("FTLOG", url)
         Glide.with(binding.root).load(url).override(360,300).into(binding.iwPic)
@@ -42,10 +44,12 @@ class ProductDetailPageFragment : Fragment() {
         return binding.root
     }
 
+    /*
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("FTLOG","ProductDetailPageFragment onCreate")
         super.onCreate(savedInstanceState)
-        val tempViewModel: MainViewModel by viewModels()
+        val tempViewModel: ProductViewModel by viewModels()
         viewModel = tempViewModel
     }
-
+    */
 }

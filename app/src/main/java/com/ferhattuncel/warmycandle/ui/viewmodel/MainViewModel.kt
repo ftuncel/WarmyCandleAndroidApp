@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
     private var allSliderItems : List<SliderEntity> = listOf()
 
     init {
-        Log.e("FTLOG","MainViewModel")
+        Log.i("FTLOG","MainViewModel init")
         loadOfferItems()
         loadCategoryItems()
         loadProductItems()
@@ -36,7 +36,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
     }
 
     fun loadProductItems(){
-        Log.e("FTLOG","loadProductItems")
+        Log.i("FTLOG","MainViewModel loadProductItems")
         CoroutineScope(Dispatchers.Main).launch {
             allProductItems = itemRepository.loadProductList()
             productList.value = allProductItems
@@ -44,7 +44,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
     }
 
     fun loadSliderItems(){
-        Log.e("FTLOG","loadSliderItems")
+        Log.i("FTLOG","MainViewModel loadSliderItems")
         CoroutineScope(Dispatchers.Main).launch {
             allSliderItems = itemRepository.loadSliderList()
             sliderList.value = allSliderItems
@@ -52,7 +52,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
     }
 
     fun loadOfferItems(){
-        Log.e("FTLOG","loadOfferItems")
+        Log.i("FTLOG","MainViewModel loadOfferItems")
         CoroutineScope(Dispatchers.Main).launch {
             allOfferItems = itemRepository.loadOfferList()
             offerList.value = allOfferItems
@@ -60,7 +60,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
     }
 
     fun loadCategoryItems(){
-        Log.e("FTLOG","loadCategoryItems")
+        Log.i("FTLOG","MainViewModel loadCategoryItems")
         CoroutineScope(Dispatchers.Main).launch {
             allCategoryItems = itemRepository.loadCategoryList()
             categoryList.value = allCategoryItems
@@ -68,6 +68,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
     }
 
     fun filterList(query:String){
+        Log.i("FTLOG","MainViewModel filterList")
         CoroutineScope(Dispatchers.Main).launch{
             val filteredItems = if (query.isEmpty()) {
                 allOfferItems

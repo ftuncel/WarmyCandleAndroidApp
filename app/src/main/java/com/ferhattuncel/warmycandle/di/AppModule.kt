@@ -17,21 +17,21 @@ class AppModule {
     @Provides
     @Singleton
     fun providesProductRepository(productDataSource: ProductDataSource) : ProductRepository {
-        Log.e("FTLOG","AppModule providesProductRepository")
+        Log.d("FTLOG","AppModule providesProductRepository")
         return ProductRepository(productDataSource)
 
     }
     @Provides
     @Singleton
     fun providesProductDataSource(productDao: ProductDao) : ProductDataSource{
-        Log.e("FTLOG","AppModule providesProductDataSource")
+        Log.d("FTLOG","AppModule providesProductDataSource")
 
         return ProductDataSource(productDao)
     }
     @Provides
     @Singleton
     fun providesProductDao() : ProductDao{
-        Log.e("FTLOG","AppModule providesProductDao")
+        Log.d("FTLOG","AppModule providesProductDao")
         return ApiUtils.getProductDao()
     }
 

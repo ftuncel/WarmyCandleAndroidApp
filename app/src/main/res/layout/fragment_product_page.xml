@@ -27,6 +27,8 @@
             android:background="@color/mainBGColor"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
+            app:title="."
+            app:titleTextColor="@color/mainBGColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

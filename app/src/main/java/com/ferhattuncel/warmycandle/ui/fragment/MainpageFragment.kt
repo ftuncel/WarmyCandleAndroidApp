@@ -23,7 +23,7 @@ class MainpageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("FTLOG","MainpageFragment")
+        Log.d("FTLOG","MainpageFragment View")
         binding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_mainpage,container,false)
         binding.mainpageFragmentDataBindingVariable = this
@@ -64,6 +64,7 @@ class MainpageFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("FTLOG","MainpageFragment onCreate")
         super.onCreate(savedInstanceState)
         val tempViewModel: MainViewModel by viewModels()
         viewModel = tempViewModel

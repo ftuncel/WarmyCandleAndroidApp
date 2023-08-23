@@ -10,38 +10,36 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ferhattuncel.warmycandle.R
 import com.ferhattuncel.warmycandle.data.entity.Product
-import com.ferhattuncel.warmycandle.databinding.CardProductBinding
 import com.ferhattuncel.warmycandle.databinding.CardProductProductBinding
-import com.ferhattuncel.warmycandle.ui.fragment.MainpageFragmentDirections
 import com.ferhattuncel.warmycandle.ui.fragment.ProductPageFragmentDirections
-import com.ferhattuncel.warmycandle.ui.viewmodel.MainViewModel
+import com.ferhattuncel.warmycandle.ui.viewmodel.ProductViewModel
 import com.ferhattuncel.warmycandle.utils.doPageTransfer
 
 
-class ProductProductAdapter (var mContext:Context, var productList:List<Product>, var viewModel: MainViewModel)
+class ProductProductAdapter (var mContext:Context, var productList:List<Product>, var viewModel: ProductViewModel)
     : RecyclerView.Adapter<ProductProductAdapter.CardDesignHolder>(){
 
     inner class CardDesignHolder(var design: CardProductProductBinding) : RecyclerView.ViewHolder(design.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
-        Log.e("FTLOG", "ProductProductAdapter onCreateViewHolder")
+        Log.i("FTLOG", "ProductProductAdapter onCreateViewHolder")
 
         val binding : CardProductProductBinding = DataBindingUtil
             .inflate(LayoutInflater.from(mContext), R.layout.card_product_product,parent,false)
         return CardDesignHolder(binding)
     }
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
-        Log.e("FTLOG", "ProductProductAdapter onBindViewHolder")
+        Log.i("FTLOG", "ProductProductAdapter onBindViewHolder")
         val product = productList.get(position)
         val d = holder.design
 
         val url = "http://warmycandle.com.tr/${product.pic}"
-        Log.e("FTLOG", url)
+        Log.d("FTLOG", url)
         Glide.with(mContext).load(url).override(120,160).into(d.iwProductTabPic)
 
         d.productEntityDataBindingVariable = product
 
         d.cvProductProduct.setOnClickListener(){
-            Log.i("FTLOG", "setOnClickListener: Page Transfer to Product Detail")
+            Log.i("FTLOG", "ProductProductAdapter setOnClickListener: Page Transfer to Product Detail")
             val go = ProductPageFragmentDirections.goProductToProductDetail(product = product)
             Navigation.doPageTransfer(it, go)
         }
@@ -66,37 +64,3 @@ class ProductProductAdapter (var mContext:Context, var productList:List<Product>
         notifyDataSetChanged()
     }
 }
-
-/*
-class ProductAdapter (var mContext: Context, var productList:List<Product>)
-    : RecyclerView.Adapter<ProductAdapter.CardProductHolder>(){
-
-    inner class CardProductHolder (var design : CardProductBinding) : RecyclerView.ViewHolder(design.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardProductHolder {
-        val binding = CardProductBinding.inflate(LayoutInflater.from(mContext) ,parent, false)
-        return CardProductHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: CardProductHolder, position: Int) {
-        val product = productList.get(position)
-        val d = holder.design
-
-        d.iwPicture.setImageResource(
-            mContext.resources.getIdentifier(product.pic, "drawable", mContext.packageName)
-        )
-
-        d.tvPrice.text = "${product.price.toString()} ₺"
-        d.btnCart.setOnClickListener {
-            Snackbar.make(it, "${product.name} added to cart", Snackbar.LENGTH_SHORT).show()
-        }
-        d.cvProduct.setOnClickListener{
-
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return productList.size
-    }
-}
-*/
