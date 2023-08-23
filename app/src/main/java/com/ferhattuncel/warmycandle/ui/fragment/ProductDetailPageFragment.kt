@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ferhattuncel.warmycandle.R
@@ -34,7 +35,9 @@ class ProductDetailPageFragment : Fragment() {
         binding.productDetailPageToolbarTitle = receivedProduct.name
 
         binding.backButton.setOnClickListener {
-            activity?.onBackPressed()
+            //activity?.onBackPressed()
+            Log.w("FTLOG","ProductDetailPageFragment Force back to Main Page")
+            Navigation.findNavController(it).navigate(R.id.mainpageFragment)
         }
 
         val url = "http://warmycandle.com.tr/${receivedProduct.pic}"
