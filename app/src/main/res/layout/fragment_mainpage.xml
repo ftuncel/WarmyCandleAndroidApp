@@ -43,11 +43,26 @@
                 android:adapter="@{productAdapterDataBindingVariable}"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/tvTitleCategories"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitleOffers"
                 app:spanCount="1"></androidx.recyclerview.widget.RecyclerView>
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/mainPageImageSlider"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="5"
+                app:iss_delay="0"
+                app:iss_period="2000"
+                app:iss_text_align="CENTER"
+                app:iss_selected_dot="@drawable/default_selected_dot"
+                app:iss_unselected_dot="@drawable/default_unselected_dot"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvOffer"></com.denzcoskun.imageslider.ImageSlider>
 
             <TextView
                 android:id="@+id/tvTitleCategories"
@@ -58,7 +73,7 @@
                 android:text="Kategoriler"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvOffer" />
+                app:layout_constraintTop_toBottomOf="@+id/mainPageImageSlider" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCategory"
@@ -67,13 +82,13 @@
                 android:adapter="@{categoryAdapterDataBindingVariable}"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitleCategories"
-                app:spanCount="2">
-            </androidx.recyclerview.widget.RecyclerView>
+                app:spanCount="2"></androidx.recyclerview.widget.RecyclerView>
+
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"

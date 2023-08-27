@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.ferhattuncel.warmycandle.R
 import com.ferhattuncel.warmycandle.ui.adapter.CategoryAdapter
 import com.ferhattuncel.warmycandle.ui.adapter.ProductAdapter
@@ -47,6 +50,28 @@ class MainpageFragment : Fragment() {
             }
         }
 
+        viewModel.sliderList.observe(viewLifecycleOwner){
+            val imageList = ArrayList<SlideModel>() // Create image list
+            val currentSliderList = viewModel.sliderList.value // Get the current value of the MutableLiveData
+            currentSliderList?.let { sliders ->
+                for (sliderEntity in sliders) {
+                    val url = "http://warmycandle.com.tr/${sliderEntity.pic}"
+                    Log.d("FTLOG",sliderEntity.title)
+                    val slideModel = SlideModel(url, sliderEntity.title)
+                    imageList.add(slideModel)
+                }
+                binding.mainPageImageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)
+            }
+        }
+
+
+/*
+        imageList.add(SlideModel("https://bit.ly/2YoJ77H", "The animal population decreased by 58 percent in 42 years."))
+        imageList.add(SlideModel("https://bit.ly/2BteuF2", "Elephants and tigers may become extinct."))
+        imageList.add(SlideModel("https://bit.ly/3fLJf72", "And people do that."))
+
+        binding.mainPageImageSlider.setImageList(viewModel.sliderList)
+*/
         /*
         binding.searchBox.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 
