@@ -40,6 +40,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
         CoroutineScope(Dispatchers.Main).launch {
             allProductItems = itemRepository.loadProductList()
             productList.value = allProductItems
+            Log.i("FTLOG","MainViewModel loadProductItems done")
         }
     }
 
@@ -48,6 +49,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
         CoroutineScope(Dispatchers.Main).launch {
             allSliderItems = itemRepository.loadSliderList()
             sliderList.value = allSliderItems
+            Log.i("FTLOG","MainViewModel loadSliderItems done")
         }
     }
 
@@ -56,6 +58,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
         CoroutineScope(Dispatchers.Main).launch {
             allOfferItems = itemRepository.loadOfferList()
             offerList.value = allOfferItems
+            Log.i("FTLOG","MainViewModel loadOfferItems done")
         }
     }
 
@@ -64,6 +67,7 @@ class MainViewModel @Inject constructor (var itemRepository: ProductRepository):
         CoroutineScope(Dispatchers.Main).launch {
             allCategoryItems = itemRepository.loadCategoryList()
             categoryList.value = allCategoryItems
+            Log.i("FTLOG","MainViewModel loadCategoryItems done")
         }
     }
 

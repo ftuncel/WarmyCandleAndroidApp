@@ -32,10 +32,23 @@ class ProductProductAdapter (var mContext:Context, var productList:List<Product>
         val product = productList.get(position)
         val d = holder.design
 
+        val firstUrl = product.pic.firstOrNull()
+        if (firstUrl != null) {
+            val fullUrl = "http://warmycandle.com.tr/$firstUrl"
+            Log.d("FTLOG", fullUrl)
+
+            Glide.with(mContext)
+                .load(fullUrl)
+                .override(120, 160)
+                .into(d.iwProductTabPic)
+        } else {
+            // Eğer pic listesi boşsa veya ilk fotoğraf yoksa, alternatif bir resim veya hata işleme yapılabilir.
+        }
+/*
         val url = "http://warmycandle.com.tr/${product.pic}"
         Log.d("FTLOG", url)
         Glide.with(mContext).load(url).override(120,160).into(d.iwProductTabPic)
-
+*/
         d.productEntityDataBindingVariable = product
 
         d.cvProductProduct.setOnClickListener(){

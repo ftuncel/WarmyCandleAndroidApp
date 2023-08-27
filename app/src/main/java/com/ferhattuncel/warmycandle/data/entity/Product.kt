@@ -13,4 +13,4 @@ data class Product (@SerializedName("product_id") var id: Int,
                     @SerializedName("product_size") var size: String,
                     @SerializedName("product_price") var price: String,
                     @SerializedName("product_stock") var stock: Int,
-                    @SerializedName("product_photo_url") var pic: String): Serializable
+                    @SerializedName("product_photo_url") var pic: List<String>): Serializable

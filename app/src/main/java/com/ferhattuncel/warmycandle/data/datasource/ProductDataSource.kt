@@ -18,6 +18,21 @@ class ProductDataSource(var productDao: ProductDao) {
     suspend fun loadProductPhotoList(product_id:Int) : List<String> =
         withContext(Dispatchers.IO){
             Log.i("FTLOG","ProductDataSource loadProductPhotoList")
+
+            try {
+                val response = productDao.loadProductPhotoList(product_id)
+                if (response.success == 1) {
+                    val photoList = response.product_photo_list
+                    for (photoUrl in photoList) {
+                        Log.d("FTLOG", "Photo URL: $photoUrl")
+                    }
+                } else {
+                    Log.e("FTLOG", "API request unsuccessful = ${response.message}")
+
+                }
+            } catch (e: Exception) {
+                Log.e("FTLOG", "Error: ${e.message}")
+            }
             return@withContext productDao.loadProductPhotoList(product_id).product_photo_list
         }
 

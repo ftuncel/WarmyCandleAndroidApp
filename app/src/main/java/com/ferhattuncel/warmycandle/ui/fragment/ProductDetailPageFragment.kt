@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.ferhattuncel.warmycandle.R
 import com.ferhattuncel.warmycandle.databinding.FragmentProductDetailPageBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProductDetailPageFragment : Fragment() {
     private lateinit var binding: FragmentProductDetailPageBinding
-    //private lateinit var viewModel: ProductViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,25 +34,40 @@ class ProductDetailPageFragment : Fragment() {
 
         binding.productDetailPageToolbarTitle = receivedProduct.name
 
+
         binding.backButton.setOnClickListener {
             //activity?.onBackPressed()
             Log.w("FTLOG","ProductDetailPageFragment Force back to Main Page")
             Navigation.findNavController(it).navigate(R.id.mainpageFragment)
         }
 
+        /*
         val url = "http://warmycandle.com.tr/${receivedProduct.pic}"
         Log.e("FTLOG", url)
         Glide.with(binding.root).load(url).override(360,300).into(binding.iwPic)
+        */
+
+        val imageList = ArrayList<SlideModel>() // Create image list
+        val currentSliderList = receivedProduct.pic // Get the current value of the MutableLiveData
+        currentSliderList?.let { sliders ->
+            for (picture in sliders) {
+                val url = "http://warmycandle.com.tr/${picture}"
+                Log.d("FTLOG",url)
+                val slideModel = SlideModel(url)
+                imageList.add(slideModel)
+            }
+            binding.productDetailPageImageSlider.setImageList(imageList, ScaleTypes.CENTER_INSIDE)
+        }
 
         return binding.root
     }
 
-    /*
+/*
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("FTLOG","ProductDetailPageFragment onCreate")
         super.onCreate(savedInstanceState)
-        val tempViewModel: ProductViewModel by viewModels()
+        val tempViewModel: ProductSliderViewModel by viewModels()
         viewModel = tempViewModel
     }
-    */
+*/
 }

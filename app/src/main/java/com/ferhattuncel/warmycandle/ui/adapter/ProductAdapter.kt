@@ -29,10 +29,24 @@ class ProductAdapter (var mContext:Context, var productList:List<Product>, var v
         val product = productList.get(position)
         val d = holder.design
 
-        val url = "http://warmycandle.com.tr/${product.pic}"
+        val firstUrl = product.pic.firstOrNull()
+        if (firstUrl != null) {
+            val fullUrl = "http://warmycandle.com.tr/$firstUrl"
+            Log.d("FTLOG", fullUrl)
+
+            Glide.with(mContext)
+                .load(fullUrl)
+                .override(120, 160)
+                .into(d.iwPicture)
+        } else {
+            Log.w("FTLOG", "No url found")
+        }
+
+        /*
+        val url = "http://warmycandle.com.tr/${product.pic[0]}"
         Log.i("FTLOG", url)
         Glide.with(mContext).load(url).override(120,160).into(d.iwPicture)
-
+*/
         d.productEntityDataBindingVariable = product
 
         d.cvProduct.setOnClickListener(){
