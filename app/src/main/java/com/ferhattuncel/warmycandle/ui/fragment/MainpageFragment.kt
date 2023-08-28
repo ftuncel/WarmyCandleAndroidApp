@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.ferhattuncel.warmycandle.R
@@ -64,27 +63,6 @@ class MainpageFragment : Fragment() {
             }
         }
 
-
-/*
-        imageList.add(SlideModel("https://bit.ly/2YoJ77H", "The animal population decreased by 58 percent in 42 years."))
-        imageList.add(SlideModel("https://bit.ly/2BteuF2", "Elephants and tigers may become extinct."))
-        imageList.add(SlideModel("https://bit.ly/3fLJf72", "And people do that."))
-
-        binding.mainPageImageSlider.setImageList(viewModel.sliderList)
-*/
-        /*
-        binding.searchBox.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return true
-            }
-            override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.filterList(newText)
-                return true
-            }
-        })
-    */
-
         return binding.root
     }
 
@@ -94,10 +72,4 @@ class MainpageFragment : Fragment() {
         val tempViewModel: MainViewModel by viewModels()
         viewModel = tempViewModel
     }
-
-    /*fun fabActionGoToCart(it:View){
-        Navigation.doPageTransfer(it, R.id.goCart)
-    }
-    */
-
 }

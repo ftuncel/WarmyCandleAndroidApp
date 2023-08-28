@@ -41,12 +41,6 @@ class ProductDetailPageFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.mainpageFragment)
         }
 
-        /*
-        val url = "http://warmycandle.com.tr/${receivedProduct.pic}"
-        Log.e("FTLOG", url)
-        Glide.with(binding.root).load(url).override(360,300).into(binding.iwPic)
-        */
-
         val imageList = ArrayList<SlideModel>() // Create image list
         val currentSliderList = receivedProduct.pic // Get the current value of the MutableLiveData
         currentSliderList?.let { sliders ->

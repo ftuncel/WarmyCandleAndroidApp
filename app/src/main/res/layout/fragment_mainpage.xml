@@ -34,7 +34,7 @@
                 android:text="Öne çıkan ürünler"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbarMainpage" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvOffer"
@@ -46,7 +46,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitleOffers"
-                app:spanCount="1"></androidx.recyclerview.widget.RecyclerView>
+                app:spanCount="1">
+            </androidx.recyclerview.widget.RecyclerView>
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/mainPageImageSlider"
@@ -62,7 +63,8 @@
                 app:iss_unselected_dot="@drawable/default_unselected_dot"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvOffer"></com.denzcoskun.imageslider.ImageSlider>
+                app:layout_constraintTop_toBottomOf="@+id/rvOffer">
+            </com.denzcoskun.imageslider.ImageSlider>
 
             <TextView
                 android:id="@+id/tvTitleCategories"
@@ -86,31 +88,8 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitleCategories"
-                app:spanCount="2"></androidx.recyclerview.widget.RecyclerView>
-
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbarMainpage">
-
-                <androidx.appcompat.widget.SearchView
-                    android:id="@+id/searchBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:queryBackground="@android:color/transparent"
-                    app:iconifiedByDefault="false"
-                    app:queryHint="Ürün ara" />
-            </com.google.android.material.card.MaterialCardView>
+                app:spanCount="2">
+            </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarMainpage"
@@ -123,7 +102,6 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
