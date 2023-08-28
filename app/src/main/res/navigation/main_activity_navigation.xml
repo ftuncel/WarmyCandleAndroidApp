@@ -30,10 +30,10 @@
             android:defaultValue="ALL_CATEGORIES" />
     </fragment>
     <fragment
-        android:id="@+id/bottom_nav_item_category"
-        android:name="com.ferhattuncel.warmycandle.ui.fragment.CategoryPageFragment"
+        android:id="@+id/bottom_nav_item_about"
+        android:name="com.ferhattuncel.warmycandle.ui.fragment.AboutPageFragment"
         android:label="CategoryPageFragment"
-        tools:layout="@layout/fragment_category_page"/>
+        tools:layout="@layout/fragment_about_page"/>
     <fragment
         android:id="@+id/productDetailPageFragment"
         android:name="com.ferhattuncel.warmycandle.ui.fragment.ProductDetailPageFragment"

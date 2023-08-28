@@ -1,6 +1,7 @@
 package com.ferhattuncel.warmycandle.data.datasource
 
 import android.util.Log
+import com.ferhattuncel.warmycandle.data.entity.AboutEntity
 import com.ferhattuncel.warmycandle.data.entity.Category
 import com.ferhattuncel.warmycandle.data.entity.Product
 import com.ferhattuncel.warmycandle.data.entity.SliderEntity
@@ -52,5 +53,11 @@ class ProductDataSource(var productDao: ProductDao) {
         withContext(Dispatchers.IO){
             Log.i("FTLOG","ProductDataSource loadSliderList")
             return@withContext productDao.loadSliderItems().sliders
+        }
+
+    suspend fun loadAboutInfo(): AboutEntity =
+        withContext(Dispatchers.IO){
+            Log.i("FTLOG","ProductDataSource loadAboutInfo")
+            return@withContext productDao.loadAboutInfo().about
         }
 }

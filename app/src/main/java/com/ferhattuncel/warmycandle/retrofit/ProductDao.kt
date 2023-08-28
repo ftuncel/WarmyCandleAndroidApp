@@ -1,5 +1,6 @@
 package com.ferhattuncel.warmycandle.retrofit
 
+import com.ferhattuncel.warmycandle.data.entity.AboutResponse
 import com.ferhattuncel.warmycandle.data.entity.CategoryResponse
 import com.ferhattuncel.warmycandle.data.entity.ProductPhotoResponse
 import com.ferhattuncel.warmycandle.data.entity.ProductResponse
@@ -27,23 +28,6 @@ interface ProductDao {
     @GET("api/getSliderList.php")
     suspend fun loadSliderItems() : SliderResponse
 
-    /*@POST("yemekler/sepeteYemekEkle.php")
-    @FormUrlEncoded
-    suspend fun addToCart(@Field("yemek_adi") itemName:String,
-                          @Field("yemek_resim_adi") itemPicture:String,
-                          @Field("yemek_fiyat") itemPrice:Int,
-                          @Field("yemek_siparis_adet") itemQuantity:Int,
-                          @Field("kullanici_adi") username:String) : CRUDResponse
-
-     */
-    /*
-    @POST("yemekler/sepettekiYemekleriGetir.php")
-
-    @FormUrlEncoded
-    suspend fun loadCartItemsList(@Field("kullanici_adi") username: String) : CartResponse
-    @POST("yemekler/sepettenYemekSil.php")
-    @FormUrlEncoded
-    suspend fun removeCartItem(@Field("sepet_yemek_id") cartItemId:Int,
-                               @Field("kullanici_adi") username:String) : CRUDResponse
-    */
+    @GET("api/getAboutInfo.php")
+    suspend fun loadAboutInfo() : AboutResponse
 }

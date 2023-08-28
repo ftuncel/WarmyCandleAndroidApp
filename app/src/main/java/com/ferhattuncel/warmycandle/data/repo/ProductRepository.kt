@@ -2,6 +2,7 @@ package com.ferhattuncel.warmycandle.data.repo
 
 import android.util.Log
 import com.ferhattuncel.warmycandle.data.datasource.ProductDataSource
+import com.ferhattuncel.warmycandle.data.entity.AboutEntity
 import com.ferhattuncel.warmycandle.data.entity.Category
 import com.ferhattuncel.warmycandle.data.entity.Product
 import com.ferhattuncel.warmycandle.data.entity.SliderEntity
@@ -32,5 +33,10 @@ class ProductRepository (var productDataSource: ProductDataSource){
     suspend fun loadSliderList(): List<SliderEntity> {
         Log.i("FTLOG","ProductRepository loadSliderList")
         return productDataSource.loadSliderList()
+    }
+
+    suspend fun loadAboutInfo(): AboutEntity {
+        Log.i("FTLOG","ProductRepository loadAboutInfo")
+        return productDataSource.loadAboutInfo()
     }
 }
