@@ -46,17 +46,41 @@
                 tools:layout_editor_absoluteY="17dp" />
         </androidx.appcompat.widget.Toolbar>
 
+
+        <HorizontalScrollView
+            android:id="@+id/hswForMaterialButtonGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarProductPage">
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/tbCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:singleSelection="true">
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </HorizontalScrollView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProductProduct"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             android:adapter="@{productProductAdapterDataBindingVariable}"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarProductPage"
-            app:spanCount="1"/>
+            app:layout_constraintTop_toBottomOf="@+id/hswForMaterialButtonGroup"
+            app:spanCount="1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,17 +2,18 @@ package com.ferhattuncel.warmycandle.ui.fragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.navArgs
@@ -20,6 +21,7 @@ import com.ferhattuncel.warmycandle.R
 import com.ferhattuncel.warmycandle.databinding.FragmentProductPageBinding
 import com.ferhattuncel.warmycandle.ui.adapter.ProductProductAdapter
 import com.ferhattuncel.warmycandle.ui.viewmodel.ProductViewModel
+import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,6 +46,26 @@ class ProductPageFragment : Fragment(), SearchView.OnQueryTextListener {
                 binding.productProductAdapterDataBindingVariable = adapter
             } else {
                 (binding.rvProductProduct.adapter as ProductProductAdapter).updateItems(it)
+            }
+        }
+
+        viewModel.categoryList.observe(viewLifecycleOwner){categoryList ->
+            binding.tbCategory.addView(createMaterialButton("Hepsi"))
+            categoryList.forEach { category ->
+                binding.tbCategory.addView(createMaterialButton(category.name))
+            }
+        }
+
+        binding.tbCategory.addOnButtonCheckedListener { group, checkedId, isChecked ->
+            if (isChecked){
+                val selectedBtn = binding.root.findViewById<MaterialButton>(binding.tbCategory.checkedButtonId)
+                val categoryName = selectedBtn.text.toString()
+                Log.i("FTLOG","ProductPageFragment Filter for ${categoryName}")
+                if (categoryName != "Hepsi") {
+                    viewModel.filterByCategory(categoryName)
+                } else {
+                    viewModel.clearFilter()
+                }
             }
         }
 
@@ -96,5 +118,19 @@ class ProductPageFragment : Fragment(), SearchView.OnQueryTextListener {
             viewModel.filterByName(newText)
         }
         return true
+    }
+
+    private fun createMaterialButton(text: String): MaterialButton {
+        val newBtn = MaterialButton(requireContext(),null, com.google.android.material.R.attr.materialButtonOutlinedStyle)
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        newBtn.layoutParams = layoutParams
+        newBtn.text = text
+        newBtn.setTextColor(resources.getColor(R.color.mainBGColor))
+        newBtn.setStrokeColorResource(R.color.mainBGColor)
+
+        return newBtn
     }
 }
